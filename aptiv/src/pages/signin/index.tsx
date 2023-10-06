@@ -1,4 +1,3 @@
-// pages/Signin.tsx
 import React from 'react';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +22,7 @@ const Signin: React.FC = () => {
         <form>
           <h1>Faça seu login</h1>
 
-          <Input icon={FiMail} name="email" placeholder="E-mail" autoComplete="false" />
+          <Input icon={FiMail} name="registro" placeholder="Registro" autoComplete="false" />
           <Input icon={FiLock} name="password" type="password" placeholder="Senha" />
 
           <Button onClick={handleSignIn}>Acessar</Button>

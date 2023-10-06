@@ -14,7 +14,17 @@
   },
   "plugins": ["@typescript-eslint", "react"],
   "rules": {
-    "@typescipt-eslint/interface-name-prefix": ["always"],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      }
+    ],
     "no-underscore-dangle": "error"
   }
 }
