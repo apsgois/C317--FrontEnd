@@ -14,9 +14,44 @@ export const Container = styled.div`
 `;
 export const TopBar = styled.div`
   width: 100%;
-  background-color: #ff3e0c; /* Cor de fundo branca */
-  padding: 8px 0; /* Espaçamento interno superior e inferior */
+  background-color: #ff3e0c;
+  padding: 8px 0;
   text-align: start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+`;
+
+export const MenuButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+`;
+
+export const SideMenu = styled.div`
+  position: fixed;
+  top: 0;
+  left: -100%; /* Inicia fora da tela */
+  width: 200px;
+  height: 100%;
+  background-color: #2c3e50;
+  padding-top: 60px; /* Ajuste conforme necessário */
+  transition: left 0.3s ease; /* Adiciona uma animação suave */
+`;
+
+export const MenuItem = styled.div`
+  padding: 16px;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #34495e;
+  }
 `;
 
 export const Logo = styled.img`
@@ -79,6 +114,7 @@ export const CircleIcon = styled.div`
 export const Icon = styled.span`
   font-size: 44px;
   color: #ffffff; /* Cor do ícone branca */
+  align-items: center;
 `;
 export const IconLabel = styled.span`
   margin-top: 8px;
