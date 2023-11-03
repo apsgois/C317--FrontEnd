@@ -14,7 +14,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Signin />} />
+        <Route path="/" element={<ADMSignin />} />
         <Route path="/home" element={<Home />} />
         <Route path="/adm" element={<ADMSignin />} />
         <Route path="/adm-home" element={<AdmHome />} />

@@ -15,7 +15,7 @@ const ADMSignin: React.FC = () => {
     // Lógica de autenticação, se necessário...
 
     // Navega para a página "home" após o login
-    navigate('/adm-home');
+    navigate('/home');
   };
 
   return (
