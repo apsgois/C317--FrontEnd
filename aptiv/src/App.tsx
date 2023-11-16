@@ -1,7 +1,7 @@
 // App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { UserProvider } from './pages/adm_signin/UserContext';
 import HelloWorld from './components/HelloWorld';
 import List from './components/List';
 import Signin from './pages/signin';
@@ -12,6 +12,7 @@ import AdmHome from './pages/adm-home';
 
 const App: React.FC = () => {
   return (
+    <UserProvider>
     <Router>
       <Routes>
         <Route path="/" element={<ADMSignin />} />
@@ -21,6 +22,7 @@ const App: React.FC = () => {
       </Routes>
       <GlobalStyle />
     </Router>
+    </UserProvider>
   );
 };
 

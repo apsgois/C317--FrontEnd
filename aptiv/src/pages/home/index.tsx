@@ -32,7 +32,12 @@ import {
   Footer,
 } from './styles';
 import Aptiv from '../../image/AptivLogo.png';
+import { useUser } from '../adm_signin/UserContext';
+
 const Home: React.FC = () => {
+  const { user } = useUser();
+  console.log('Entrou na HOME');
+  const isAdmin = user && user.admin === 'True';
   return (
     <Container>
       <form>
@@ -135,12 +140,19 @@ const Home: React.FC = () => {
             </CircleIcon>
             <IconLabel>Chevrolet</IconLabel>
           </IconLink>
-          <IconLink to="/adm-home">
-            <CircleIcon>
-              <RiAdminLine />
-            </CircleIcon>
-            <IconLabel>ADM</IconLabel>
-          </IconLink>
+          <IconLinks>
+            {/* ... Outros ícones */}
+
+            {/* Exemplo de condicional para tornar o ícone disponível ou cinza */}
+            <IconLink to={isAdmin ? '/adm-home' : '#'} style={{ pointerEvents: isAdmin ? 'auto' : 'none' }}>
+              <CircleIcon style={{ color: isAdmin ? 'currentColor' : 'gray' }}>
+                <RiAdminLine />
+              </CircleIcon>
+              <IconLabel style={{ color: isAdmin ? 'currentColor' : 'gray' }}>Admin</IconLabel>
+            </IconLink>
+
+            {/* ... Outros ícones */}
+          </IconLinks>
           <IconLink to="https://wa.me/seuNumeroDoWhatsApp">
             <FaWhatsapp />
             <IconLabel>WhatsApp</IconLabel>
@@ -151,7 +163,7 @@ const Home: React.FC = () => {
 
       <Footer>
         <CompanyLogo src={Aptiv} alt="Logo da Empresa" />
-        <PrivacyText>Espirito Santo do Pinhal</PrivacyText>
+        <PrivacyText>{user?.unidade}</PrivacyText>
       </Footer>
     </Container>
   );

@@ -9,10 +9,12 @@ import { PrivacyText } from '../home/styles';
 import Aptiv from '../../image/AptivLogo.png';
 import handleSignIn from './services';
 import useCustomNavigate from './navegate';
+import { useUser } from './UserContext';
 
 const ADMSignin: React.FC = () => {
-  const customNavigate = useCustomNavigate();
   const navigate = useNavigate();
+  const { setUserContext } = useUser();
+
   const handleClick = async () => {
     const usernameElement = document.getElementById('username') as HTMLInputElement | null;
     const passwordElement = document.getElementById('password') as HTMLInputElement | null;
@@ -28,7 +30,7 @@ const ADMSignin: React.FC = () => {
       }
 
       // Chame a função handleSignIn para autenticação
-      const signInSuccess = await handleSignIn(username, password, customNavigate);
+      const signInSuccess = await handleSignIn(username, password, navigate, setUserContext);
     }
   };
   useEffect(() => {

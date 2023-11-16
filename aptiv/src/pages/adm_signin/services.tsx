@@ -1,11 +1,26 @@
-import { useNavigate } from 'react-router-dom';
+type User = {
+  _id: string;
+  mat: number;
+  kpi: string;
+  admin: string;
+  unidade: string;
+};
 
-const handleSignIn = async (username: string, password: string, navigateFunction: Function) => {
+type NavigateFunction = (path: string) => void;
+type SetUserContextFunction = (userData: User) => void;
+
+const handleSignIn = async (
+  username: string,
+  password: string,
+  navigate: NavigateFunction,
+  setUserContext: SetUserContextFunction,
+) => {
   const requestBody = {
     mat: parseInt(username),
-    password: parseInt(password),
+    password: password,
   };
   console.log(requestBody);
+
   try {
     const response = await fetch('https://rxprd9ni6e.execute-api.us-east-1.amazonaws.com/user/auth', {
       method: 'POST',
@@ -17,8 +32,9 @@ const handleSignIn = async (username: string, password: string, navigateFunction
 
     if (response.ok) {
       console.log('OK');
-      navigateFunction('/home');
-      // navigate('/home');
+      const userData: User = await response.json();
+      setUserContext(userData);
+      navigate('/home');
     } else {
       alert('Falha na autenticação. Verifique suas credenciais.');
     }
