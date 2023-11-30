@@ -141,9 +141,6 @@ const Home: React.FC = () => {
             <IconLabel>Chevrolet</IconLabel>
           </IconLink>
           <IconLinks>
-            {/* ... Outros ícones */}
-
-            {/* Exemplo de condicional para tornar o ícone disponível ou cinza */}
             <IconLink to={isAdmin ? '/adm-home' : '#'} style={{ pointerEvents: isAdmin ? 'auto' : 'none' }}>
               <CircleIcon style={{ color: isAdmin ? 'currentColor' : 'gray' }}>
                 <RiAdminLine />

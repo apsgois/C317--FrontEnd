@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { FiUser, FiLock } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import { CompanyLogo, CompanyLogo1, Container, Content, Footer } from './styles';
+import { CompanyLogo, CompanyLogo1, Container, Content, Footer, Header2, Header3 } from './styles';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import logoImage from '../../image/info.png';
@@ -23,21 +23,16 @@ const ADMSignin: React.FC = () => {
       const username = usernameElement.value;
       const password = passwordElement.value;
 
-      // Adicione sua lógica de validação aqui
       if (username.trim() === '' || password.trim() === '') {
         alert('Por favor, preencha todos os campos.');
-        return; // Impede a continuação se os campos não estiverem preenchidos
+        return;
       }
 
-      // Chame a função handleSignIn para autenticação
       const signInSuccess = await handleSignIn(username, password, navigate, setUserContext);
     }
   };
   useEffect(() => {
-    // Este efeito será executado sempre que a autenticação for alterada
-    // Se deseja impedir o usuário de navegar para trás, você pode redirecionar novamente
-    // para a página anterior quando detectar uma mudança na autenticação
-    navigate('/'); // Substitua '/' pela rota da página de login
+    navigate('/');
   }, []);
 
   return (
@@ -45,9 +40,8 @@ const ADMSignin: React.FC = () => {
       <Content>
         <form>
           <CompanyLogo src={logoImage} alt="Logo" />
-          <h1>Seja bem-vindo</h1>
-
-          <h2>Essa aplicação é responsável por controlar a aplicação web do infoAptiv.</h2>
+          <Header2>Seja bem-vindo</Header2>
+          <Header3>Essa aplicação é responsável por controlar a aplicação web do infoAptiv.</Header3>
 
           <Input
             id="username"
@@ -56,6 +50,7 @@ const ADMSignin: React.FC = () => {
             placeholder="Digite o nome de usuário"
             autoComplete="false"
           />
+
           <Input id="password" icon={FiLock} name="senha" type="password" placeholder="Digite sua senha" />
 
           <Button onClick={handleClick}>Entrar</Button>

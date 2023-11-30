@@ -34,7 +34,6 @@ const UsuariosForm: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<{ name?: string; value: unknown }>) => {
     const { name, value } = e.target;
 
-    // Certifique-se de que o valor de "mat" seja sempre um número
     const numericValue = name === 'mat' && value !== '' ? parseInt(value as string, 10) : value;
 
     setUserData((prevData) => ({ ...prevData, [name as string]: numericValue }));
@@ -66,7 +65,9 @@ const UsuariosForm: React.FC = () => {
       if (response.ok) {
         // Atualize a lista de usuários após a exclusão
         alert('Usuario deletado com sucesso');
-        fetchUserList();
+        setUserList((prevUserList) => prevUserList.filter((user) => user.id !== userId));
+
+        // fetchUserList();
       } else {
         console.error('Erro ao excluir usuário');
       }

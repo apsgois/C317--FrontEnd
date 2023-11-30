@@ -81,3 +81,20 @@ export const Content = styled.div`
     text-decoration: none;
   }
 `;
+export const Header2 = styled.h1`
+  font-family: sans-serif;
+  font-size: 25px;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 2px;
+`;
+
+export const Header3 = styled.h1`
+  font-size: 12px;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  margin-top: -2px;
+  text-align: left;
+`;

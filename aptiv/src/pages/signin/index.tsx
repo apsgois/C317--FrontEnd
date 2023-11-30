@@ -10,9 +10,6 @@ const Signin: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    // Lógica de autenticação, se necessário...
-
-    // Navega para a página "home" após o login
     navigate('/home');
   };
 

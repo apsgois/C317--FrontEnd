@@ -11,13 +11,6 @@ export default function PersistentDrawerLeft() {
     <>
       <TopBar>
         <Logo src={Aptiv} alt="Logo da Empresa" />
-        {/* <button
-          onClick={() => {
-            setOpen(!open);
-          }}
-        >
-          <MenuIcon color="primary" />
-        </button> */}
       </TopBar>
 
       <div style={{ display: 'flex', flexDirection: 'row' }}>

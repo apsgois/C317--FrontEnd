@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   font-family: 'Formular';
-  padding: 0 70px;
+  padding: 20px; /* Ajuste o padding geral */
 `;
 
 export const IconLinks = styled.div`
@@ -17,6 +17,8 @@ export const IconLinks = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  width: 100%; /* Garante que a largura seja 100% */
+  margin-top: 20px; /* Adiciona espaço superior para os ícones */
 `;
 
 export const IconLink = styled(Link)`
@@ -25,18 +27,17 @@ export const IconLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1; /* Adicionando flex para ocupar todo o espaço disponível */
+  flex: 1;
   transition: color 0.3s;
 
   &:hover {
-    color: #007bff; /* Cor ao passar o mouse */
+    color: #007bff;
   }
 `;
 
 export const CircleIcon = styled.div`
-  width: 150px;
-  height: 150px;
-  border-radius: 200%;
+  width: 115px;
+  height: 115px;
   border-radius: 50%;
   background-color: #000000; /* Cor de fundo laranja */
   display: flex;
@@ -44,18 +45,22 @@ export const CircleIcon = styled.div`
   justify-content: center;
   border: 2px solid #ff3e0c; /* Borda branca */
   svg {
-    /* Ajuste o tamanho do ícone conforme necessário */
-    width: 50%; /* Use uma porcentagem do tamanho do CircleIcon */
-    height: auto; /* Mantenha a proporção original */
+    width: 50%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    width: 70px; /* Ajuste o tamanho do ícone para celular */
+    height: 70px;
+    svg {
+      width: 60%; /* Ajuste o tamanho do svg para celular */
+    }
   }
 `;
 
-export const Icon = styled.span`
-  font-size: 300px;
-  color: #ffffff; /* Cor do ícone branca */
-`;
 export const IconLabel = styled.span`
   margin-top: 10px;
+  text-align: center; /* Alinhando o texto ao centro */
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -68,8 +73,8 @@ export const Footer = styled.footer`
 `;
 
 export const CompanyLogo = styled.img`
-  width: 142.31px; /* Largura desejada */
-  height: 18px; /* Altura desejada */
+  width: 142.31px;
+  height: 18px;
   margin-bottom: 10px;
 `;
 
