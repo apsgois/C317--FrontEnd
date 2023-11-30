@@ -17,18 +17,22 @@ const FormContainer = styled(Paper)(({ theme }) => ({
   backgroundColor: '#343a40', // Cor de fundo do formulário
   color: 'white', // Cor do texto do formulário
   width: '550px',
+  [theme.breakpoints.down('sm')]: {
+    width: '180%', // Altera a largura para 100% em telas menores que 600px
+    padding: theme.spacing(-2),
+  },
 }));
 
-const UsuariosForm: React.FC = () => {
+const UsuariosForm: React.FC<{ onBackButtonClick: () => void }> = ({ onBackButtonClick }) => {
   const [userList, setUserList] = useState<{ id: string; mat: number; kpi: string; admin: string; unidade: string }[]>(
     [],
   );
   const [userData, setUserData] = useState({
     mat: 0,
     password: '',
-    kpi: '',
-    admin: '',
-    unidade: '',
+    kpi: 'True',
+    admin: 'False',
+    unidade: 'MG',
   });
 
   const handleInputChange = (e: React.ChangeEvent<{ name?: string; value: unknown }>) => {
@@ -37,6 +41,11 @@ const UsuariosForm: React.FC = () => {
     const numericValue = name === 'mat' && value !== '' ? parseInt(value as string, 10) : value;
 
     setUserData((prevData) => ({ ...prevData, [name as string]: numericValue }));
+  };
+
+  const handleRefreshClick = () => {
+    // Adicione a lógica de atualização aqui
+    window.location.reload();
   };
 
   const handleAddItem = () => {
@@ -66,7 +75,7 @@ const UsuariosForm: React.FC = () => {
         // Atualize a lista de usuários após a exclusão
         alert('Usuario deletado com sucesso');
         setUserList((prevUserList) => prevUserList.filter((user) => user.id !== userId));
-
+        window.location.reload();
         // fetchUserList();
       } else {
         console.error('Erro ao excluir usuário');
@@ -94,7 +103,13 @@ const UsuariosForm: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', paddingLeft: '300px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', paddingLeft: '400px' }}>
+      <Button
+        onClick={handleRefreshClick}
+        style={{ backgroundColor: '#ff3e0c', color: 'white', marginTop: 'auto', marginBottom: '10px' }}
+      >
+        Voltar
+      </Button>
       <FormContainer>
         <Typography variant="h5" gutterBottom>
           Cadastro de Usuários

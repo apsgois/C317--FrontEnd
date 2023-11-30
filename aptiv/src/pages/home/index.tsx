@@ -33,6 +33,7 @@ import {
 } from './styles';
 import Aptiv from '../../image/AptivLogo.png';
 import { useUser } from '../adm_signin/UserContext';
+import { MdOutlineExitToApp } from 'react-icons/md';
 
 const Home: React.FC = () => {
   const { user } = useUser();
@@ -154,6 +155,11 @@ const Home: React.FC = () => {
             <FaWhatsapp />
             <IconLabel>WhatsApp</IconLabel>
             <IconLabel>RH Atende</IconLabel>
+          </IconLink>
+
+          <IconLink to="/">
+            <MdOutlineExitToApp />
+            <IconLabel>Sair</IconLabel>
           </IconLink>
         </IconLinks>
       </form>

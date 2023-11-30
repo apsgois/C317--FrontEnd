@@ -1,5 +1,5 @@
 // CadastroForm.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -10,18 +10,25 @@ import ListItemText from '@mui/material/ListItemText';
 import { Button, Input, Paper, TextField } from '@mui/material';
 import { AiFillFileAdd } from 'react-icons/ai';
 import { styled, useTheme } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import PersistentDrawerLeft from '../../pages/adm-home';
 
 const FormContainer = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   backgroundColor: '#343a40', // Cor de fundo do formulário
   color: 'white', // Cor do texto do formulário
   width: '550px',
+  [theme.breakpoints.down('sm')]: {
+    width: '180%', // Altera a largura para 100% em telas menores que 600px
+    padding: theme.spacing(-2),
+  },
 }));
-
-const CadastroForm: React.FC = () => {
+const CadastroForm: React.FC<{ onBackButtonClick: () => void }> = ({ onBackButtonClick }) => {
   const [open, setOpen] = React.useState(false);
   const [itemName, setItemName] = React.useState('');
   const [itemList, setItemList] = React.useState<string[]>([]);
+  const [isCadastroFormOpen, setIsCadastroFormOpen] = useState(false);
+  const navegate = useNavigate();
 
   const [files, setFiles] = React.useState<string[]>([]);
   const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
@@ -55,8 +62,19 @@ const CadastroForm: React.FC = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const handleRefreshClick = () => {
+    // Adicione a lógica de atualização aqui
+    window.location.reload();
+  };
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', paddingLeft: '300px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', paddingLeft: '400px' }}>
+      <Button
+        onClick={handleRefreshClick}
+        style={{ backgroundColor: '#ff3e0c', color: 'white', marginTop: 'auto', marginBottom: '10px' }}
+      >
+        Voltar
+      </Button>
       <FormContainer>
         <Typography variant="h5" gutterBottom>
           Cadastro de Agrupamentos
@@ -78,11 +96,15 @@ const CadastroForm: React.FC = () => {
             onChange={(e) => setItemName(e.target.value)}
             InputLabelProps={{ style: { color: 'white' } }}
             InputProps={{
-              style: { color: 'white', borderColor: 'white' },
+              style: { color: 'white', borderColor: 'white', width: '100%' },
             }}
           />
 
-          <Button variant="contained" style={{ backgroundColor: '#ff3e0c', color: 'white' }} onClick={handleAddItem}>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: '#ff3e0c', color: 'white', width: '100%' }}
+            onClick={handleAddItem}
+          >
             Adicionar
           </Button>
 
